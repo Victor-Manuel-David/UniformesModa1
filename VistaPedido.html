@@ -39,9 +39,8 @@
 
         /* Header styles with animated gradient */
         .header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            background-size: 200% 200%;
-            animation: gradientBG 10s ease infinite;
+            background: linear-gradient(50deg, #FF7F50, #FFD700, #ff3499, #6d22b3);
+            
             color: var(--text-light);
             padding: 15px 5%;
             display: flex;
@@ -104,6 +103,7 @@
             padding: 20px 5%;
             background-color: white;
             display: flex;
+            text-decoration: none;
             align-items: center;
             justify-content: space-between;
             box-shadow: var(--shadow);
@@ -113,6 +113,7 @@
             font-size: 34px;
             font-weight: bold;
             color: var(--primary);
+            text-decoration: none;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -132,6 +133,10 @@
             justify-content: center;
             color: rgb(255, 255, 255);
             font-weight: bold;
+        }
+
+        a{
+            text-decoration: none;
         }
 
         .nav-menu {
@@ -402,24 +407,26 @@
         .order-status {
             margin-top: 30px;
         }
-
+        /* Ajustar la barra de estado */
         .status-timeline {
             display: flex;
             align-items: center;
             justify-content: space-between;
             margin-top: 40px;
             position: relative;
+            padding-top: 30px; /* Añadir espacio para separar la línea de los iconos */
         }
 
         .status-timeline::before {
             content: "";
             position: absolute;
-            top: 30px;
+            top: 50%; /* Centrar la línea verticalmente con respecto a los iconos */
             left: 0;
             width: 100%;
             height: 4px;
             background-color: var(--gray);
             z-index: 1;
+            transform: translateY(-50%); /* Asegurar que la línea esté centrada */
         }
 
         .status-step {
@@ -429,6 +436,7 @@
             position: relative;
             z-index: 2;
             width: 16.666%;
+            margin-top: -15px; /* Ajustar la posición de los iconos */
         }
 
         .status-icon {
@@ -445,6 +453,7 @@
             margin-bottom: 10px;
             position: relative;
             transition: var(--transition);
+            z-index: 2; /* Asegurar que los iconos estén por encima de la línea */
         }
 
         .status-text {
@@ -453,6 +462,7 @@
             text-align: center;
             color: var(--text-dark);
             max-width: 120px;
+            margin-top: 10px; /* Añadir espacio entre el texto y el icono */
         }
 
         .status-date {
@@ -788,11 +798,9 @@
 
     <div class="logo-container">
         <div class="logo">
-            <div class="logo-icon">
-                <div class="logo-icon"><img src="Imagenes/UM-Logo.png" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 0px; background-color: white;" alt="Logo Uniformes Moda">
-                </div>
+            <div class="logo-icon"><img src="Imagenes/UM-Logo.png" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 0px; background-color: white;" alt="Logo Uniformes Moda">
             </div>
-            <span>Uniformes</span>Moda
+            <a href="LoginPedido.html"><span>Uniformes</span>Moda</a>
         </div>
         <nav class="nav-menu">
             <a href="#">Mujer</a>
@@ -996,7 +1004,7 @@
                             <i class="fas fa-check-circle"></i>
                         </div>
                         <div class="status-text">
-                            Control de Calidad
+                            Bordado
                             <div class="status-date">Pendiente</div>
                         </div>
                     </div>

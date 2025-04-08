@@ -37,9 +37,9 @@
 
         /* Header styles with animated gradient */
         .header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            background-size: 200% 200%;
-            animation: gradientBG 10s ease infinite;
+            background: linear-gradient(100deg, #FF7F50, #FFD700, #ff3499, #6d22b3);
+            /* background-size: 200% 200%;
+            animation: gradientBG 10s ease infinite; */
             color: var(--text-light);
             padding: 15px 5%;
             display: flex;
@@ -130,6 +130,10 @@
             justify-content: center;
             color: rgb(255, 255, 255);
             font-weight: bold;
+        }
+        
+        a{
+            text-decoration: none;
         }
 
         .nav-menu {
@@ -284,6 +288,7 @@
         .form-section-title {
             font-size: 22px;
             font-weight: 600;
+            margin-top: 40px;
             margin-bottom: 20px;
             color: var(--primary);
             display: flex;
@@ -381,8 +386,8 @@
         .submit-btn {
             background-color: var(--primary);
             color: white;
-            padding: 12px 20px;
-            font-size: 16px;
+            padding: 10px 15px;
+            font-size: 14px;
         }
 
         .add-product-btn {
@@ -677,7 +682,7 @@
             text-align: center;
             font-size: 14px;
             color: var(--text-dark);
-            margin-left: -35px;
+            margin-left: -5px;
         }
 
         /* Form Step Sections */
@@ -794,7 +799,7 @@
         <div class="logo">
             <div class="logo-icon"><img src="Imagenes/UM-Logo.png" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 0px; background-color: white;" alt="Logo Uniformes Moda">
             </div>
-            <span>Uniformes</span>Moda
+            <a href="LoginPedido.html"><span>Uniformes</span>Moda</a>
         </div>
         <nav class="nav-menu">
             <a href="#">Mujer</a>
