@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Pedido - Uniformes Moda</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #8b1155;
+            --primary-light: #ad2a72;
+            --primary-dark: #690c3f;
+            --accent: #f7d507;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --gray-light: #f5f5f5;
+            --gray: #e0e0e0;
+            --success: #4CAF50;
+            --warning: #FF9800;
+            --error: #f44336;
+            --pending: #9e9e9e;
+            --border-radius: 8px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Header styles with animated gradient */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            background-size: 200% 200%;
+            animation: gradientBG 10s ease infinite;
+            color: var(--text-light);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .header-contact {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-contact div {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .header-contact div:hover {
+            transform: translateY(-2px);
+        }
+
+        .header-promo {
+            font-weight: bold;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 8px 15px;
+            border-radius: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .header-cart {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .header-cart:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Logo and Navigation */
+        .logo-container {
+            padding: 20px 5%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: var(--shadow);
+        }
+
+        .logo {
+            font-size: 34px;
+            font-weight: bold;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgb(255, 255, 255);
+            font-weight: bold;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            padding: 8px 12px;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+            transform: translateY(0);
+        }
+
+        .container:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--text-light);
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 28px;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 60%);
+            animation: ripple 10s linear infinite;
+        }
+
+        @keyframes ripple {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Content */
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--gray);
+            padding-bottom: 30px;
+            transition: var(--transition);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--primary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--gray);
+        }
+
+        .section-title::before {
+            content: "";
+            font-family: "Font Awesome 6 Free";
+            margin-right: 10px;
+            color: var(--primary);
+        }
+
+        .section:nth-child(1) .section-title::before {
+            content: "\f3e0";  /* Recibo icon */
+        }
+
+        .section:nth-child(2) .section-title::before {
+            content: "\f007";  /* Cliente icon */
+        }
+
+        .section:nth-child(3) .section-title::before {
+            content: "\f466";  /* Productos icon */
+        }
+
+        .section:nth-child(4) .section-title::before {
+            content: "\f254";  /* Estado icon */
+        }
+
+        /* Receipt Image */
+        .receipt-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .receipt-image {
+            max-width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border: 2px solid var(--gray);
+            transition: var(--transition);
+        }
+
+        .receipt-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .info-item {
+            background-color: var(--gray-light);
+            padding: 15px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .info-item:hover {
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .info-value {
+            font-size: 16px;
+            word-break: break-word;
+        }
+
+        /* Products */
+        .product-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .product-item {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .product-item:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #f5f5f5;
+            cursor: pointer;
+            transition: var(--transition);
+            border-left: 4px solid var(--primary);
+        }
+
+        .product-header:hover {
+            background-color: #ebebeb;
+        }
+
+        .product-header strong {
+            font-size: 17px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .product-header strong::before {
+            content: "\f7b6";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: var(--primary);
+        }
+
+        .product-content {
+            background-color: white;
+            padding: 20px;
+            border-top: 1px solid var(--gray);
+        }
+
+        .product-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .product-detail {
+            background-color: var(--gray-light);
+            padding: 10px;
+            border-radius: var(--border-radius);
+        }
+
+        .product-detail-label {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .product-detail-value {
+            font-size: 15px;
+        }
+
+        /* Order Status */
+        .order-status {
+            margin-top: 30px;
+        }
+
+        .status-timeline {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 40px;
+            position: relative;
+        }
+
+        .status-timeline::before {
+            content: "";
+            position: absolute;
+            top: 30px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: var(--gray);
+            z-index: 1;
+        }
+
+        .status-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            width: 16.666%;
+        }
+
+        .status-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: white;
+            border: 3px solid var(--gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            font-size: 24px;
+            margin-bottom: 10px;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .status-text {
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+            color: var(--text-dark);
+            max-width: 120px;
+        }
+
+        .status-date {
+            font-size: 12px;
+            color: #777;
+            margin-top: 5px;
+        }
+
+        /* Status styles */
+        .status-completed .status-icon {
+            background-color: var(--success);
+            border-color: var(--success);
+            color: white;
+        }
+
+        .status-in-progress .status-icon {
+            background-color: var(--warning);
+            border-color: var(--warning);
+            color: white;
+            animation: pulse 1.5s infinite;
+        }
+
+        .status-pending .status-icon {
+            background-color: white;
+            border-color: var(--pending);
+            color: var(--pending);
+        }
+
+        /* Add a completed line before the current step */
+        .status-completed::after,
+        .status-in-progress::after {
+            content: "";
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            width: 100%;
+            height: 4px;
+            background-color: var(--success);
+            z-index: 1;
+        }
+
+        .status-in-progress::after {
+            background-color: var(--warning);
+            width: 50%;
+        }
+
+        /* Delivery Date */
+        .delivery-date {
+            margin-top: 40px;
+            background-color: var(--gray-light);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            border-left: 4px solid var(--primary);
+        }
+
+        .delivery-date strong {
+            color: var(--primary);
+            font-size: 18px;
+        }
+
+        /* Buttons */
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .btn {
+            font-family: 'Poppins', 'Arial', sans-serif;
+            font-weight: 600;
+            padding: 12px 25px;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(139, 17, 85, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
+        }
+
+        /* Social Media Sidebar */
+        .social-media {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 100;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 22px;
+            border-radius: 50%;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        .social-icon::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: -100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: 0.3s;
+        }
+
+        .social-icon:hover::after {
+            left: 100%;
+        }
+
+        .whatsapp {
+            background-color: #25D366;
+        }
+
+        .instagram {
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+        }
+
+        .facebook {
+            background-color: #3b5998;
+        }
+
+        /* Chat Button */
+        .chat-button {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            background: var(--primary);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 100;
+        }
+
+        .chat-button:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(139, 17, 85, 0.3);
+        }
+
+        .chat-button .pulse {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: #4CAF50;
+            border-radius: 50%;
+            margin-right: 8px;
+            position: relative;
+        }
+
+        .chat-button .pulse::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: inherit;
+            border-radius: 50%;
+            z-index: -1;
+            animation: pulse-animation 1.5s infinite;
+        }
+
+        @keyframes pulse-animation {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(3); opacity: 0; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .container {
+                width: 90%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                padding: 15px 10px;
+                gap: 10px;
+            }
+            
+            .header-contact {
+                flex-direction: column;
+                margin-bottom: 10px;
+                gap: 10px;
+            }
+            
+            .nav-menu {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .status-timeline {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 30px;
+            }
+            
+            .status-timeline::before {
+                top: 0;
+                left: 30px;
+                width: 4px;
+                height: 100%;
+            }
+            
+            .status-step {
+                width: 100%;
+                flex-direction: row;
+                gap: 20px;
+            }
+            
+            .status-completed::after,
+            .status-in-progress::after {
+                top: 0;
+                left: 30px;
+                width: 4px;
+                height: 100%;
+            }
+            
+            .status-in-progress::after {
+                height: 50%;
+            }
+            
+            .social-media {
+                display: none;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-menu {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .page-header {
+                font-size: 22px;
+                padding: 20px 15px;
+            }
+            
+            .product-header strong {
+                font-size: 15px;
+            }
+            
+            .product-details {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-contact">
+            <div>
+                <i class="fas fa-phone"></i> 3053170520
+            </div>
+            <div>
+                <i class="fas fa-envelope"></i> INFO@UNIFORMESMODA.COM
+            </div>
+        </div>
+        <div class="header-promo">
+            ENVÍOS GRATIS POR COMPRAS SUPERIORES A $200.000
+        </div>
+        <div class="header-cart">
+            <i class="fas fa-shopping-cart"></i> 0 ELEMENTOS
+        </div>
+    </header>
+
+    <div class="logo-container">
+        <div class="logo">
+            <div class="logo-icon">
+                <div class="logo-icon"><img src="Imagenes/UM-Logo.png" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 0px; background-color: white;" alt="Logo Uniformes Moda">
+                </div>
+            </div>
+            <span>Uniformes</span>Moda
+        </div>
+        <nav class="nav-menu">
+            <a href="#">Mujer</a>
+            <a href="#">Hombre</a>
+            <a href="#">Contáctanos</a>
+            <a href="#">Nosotros</a>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="page-header">
+            Detalle de Pedido - ORD-2025-0042
+        </div>
+        <div class="content">
+            <!-- Comprobante de Pago -->
+            <div class="section">
+                <div class="section-title">
+                    Comprobante de Pago
+                </div>
+                <div class="receipt-container">
+                    <img src="Imagenes/Comprobante.png" alt="Comprobante de pago" style="width: 300px; height: 300px; margin-right: 10px;" class="receipt-image">
+                </div>
+            </div>
+
+            <!-- Información del Cliente y Pedido -->
+            <div class="section">
+                <div class="section-title">
+                    Información del Cliente y Pedido
+                </div>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">Número de Orden</div>
+                        <div class="info-value">ORD-2025-0042</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Fecha del Pedido</div>
+                        <div class="info-value">07/04/2025</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Nombre del Cliente</div>
+                        <div class="info-value">Ana María Rodríguez López</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Cédula</div>
+                        <div class="info-value">1098765432</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Celular</div>
+                        <div class="info-value">315 876 5432</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Asesor</div>
+                        <div class="info-value">Carlos Jiménez</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Productos -->
+            <div class="section">
+                <div class="section-title">
+                    Productos
+                </div>
+                <div class="product-list">
+                    <!-- Producto 1 -->
+                    <div class="product-item">
+                        <div class="product-header" onclick="toggleProduct('producto1Content')">
+                            <strong>Cinturón Dama</strong>
+                            <button type="button" class="toggle-btn" id="toggleProducto1">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="product-content" id="producto1Content">
+                            <div class="product-details">
+                                <div class="product-detail">
+                                    <div class="product-detail-label">Color</div>
+                                    <div class="product-detail-value">Azul Rey</div>
+                                </div>
+                                <div class="product-detail">
+                                    <div class="product-detail-label">Talla de Camisa</div>
+                                    <div class="product-detail-value">M</div>
+                                </div>
+                                <div class="product-detail">
+                                    <div class="product-detail-label">Talla de Pantalón</div>
+                                    <div class="product-detail-value">M</div>
+                                </div>
+                                <div class="product-detail">
+                                    <div class="product-detail-label">Bordado</div>
+                                    <div class="product-detail-value">Sí</div>
+                                </div>
+                                
+                                <div class="product-detail">
+                                    <div class="product-detail-label">Cantidad</div>
+                                    <div class="product-detail-value">2</div>
+                                </div>
+                                <div class="product-detail">
+                                    <div class="product-detail-label">Tipo de tela</div>
+                                    <div class="product-detail-value">Algodón</div>
+                                </div>
+                                <div class="product-detail">
+                                    <div class="product-detail-label">Observaciones</div>
+                                    <div class="product-detail-value">Logo en la parte izquierda del pecho, nombre en la manga derecha.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Producto 2 -->
+                    <div class="product-item">
+                        <div class="product-header" onclick="toggleProduct('producto2Content')">
+                            <strong>Camisa Ejecutiva</strong>
+                            <button type="button" class="toggle-btn" id="toggleProducto2">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="product-content" id="producto2Content">
+                            <div class="product-details">
+                                <div class="product-detail">
+                                    <div class="product-detail-label">Color</div>
+                                    <div class="product-detail-value">Blanco</div>
+                                </div>
+                                <div class="product-detail">
+                                    <div class="product-detail-label">Talla de Camisa</div>
+                                    <div class="product-detail-value">L</div>
+                                </div>
+                                <div class="product-detail">
+                                    <div class="product-detail-label">Talla de Pantalón</div>
+                                    <div class="product-detail-value">N/A</div>
+                                </div>
+                                <div class="product-detail">
+                                    <div class="product-detail-label">Bordado</div>
+                                    <div class="product-detail-value">Sí</div>
+                                </div>
+                                <div class="product-detail">
+                                    <div class="product-detail-label">Cantidad</div>
+                                    <div class="product-detail-value">3</div>
+                                </div>
+                                <div class="product-detail">
+                                    <div class="product-detail-label">Observaciones</div>
+                                    <div class="product-detail-value">Manga larga, con puños franceses.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Estado del Pedido -->
+            <div class="section">
+                <div class="section-title">
+                    Estado del Pedido
+                </div>
+                
+                <div class="status-timeline">
+                    <!-- Paso 1: Solicitud -->
+                    <div class="status-step status-completed">
+                        <div class="status-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="status-text">
+                            Solicitud
+                            <div class="status-date">07/04/2025</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Paso 2: Trazo y Moldes -->
+                    <div class="status-step status-completed">
+                        <div class="status-icon">
+                            <i class="fas fa-pencil-ruler"></i>
+                        </div>
+                        <div class="status-text">
+                            Trazo y Moldes
+                            <div class="status-date">10/04/2025</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Paso 3: Cortes -->
+                    <div class="status-step status-in-progress">
+                        <div class="status-icon">
+                            <i class="fas fa-cut"></i>
+                        </div>
+                        <div class="status-text">
+                            Cortes
+                            <div class="status-date">14/04/2025</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Paso 4: Confección -->
+                    <div class="status-step status-pending">
+                        <div class="status-icon">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <div class="status-text">
+                            Confección
+                            <div class="status-date">Pendiente</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Paso 5: Control de Calidad -->
+                    <div class="status-step status-pending">
+                        <div class="status-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="status-text">
+                            Control de Calidad
+                            <div class="status-date">Pendiente</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Paso 6: Entrega -->
+                    <div class="status-step status-pending">
+                        <div class="status-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <div class="status-text">
+                            Entrega
+                            <div class="status-date">Pendiente</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="delivery-date">
+                    <i class="fas fa-calendar-alt"></i> Fecha estimada de entrega: <strong>28/04/2025</strong>
+                </div>
+                
+                <div class="action-buttons">
+                    <a href="#" class="btn btn-primary">
+                        <i class="fas fa-headset"></i> Contactar a mi asesor
+                    </a>
+                    <a href="#" class="btn btn-secondary">
+                        <i class="fas fa-print"></i> Imprimir detalle
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Sidebar Social Media -->
+    <div class="social-media">
+        <a href="#" class="social-icon whatsapp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="#" class="social-icon instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="#" class="social-icon facebook">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+    </div>
+    
+    <!-- Chat Button -->
+    <div class="chat-button">
+        <span class="pulse"></span>
+        <i class="fas fa-comments"></i> ¿Necesitas ayuda?
+    </div>
+    
+    <script>
+        // Función para alternar la visibilidad del contenido del producto
+        function toggleProduct(id) {
+            const content = document.getElementById(id);
+            content.style.display = content.style.display === 'none' ? 'block' : 'none';
+            
+            // Cambiar el ícono del botón de alternar
+            const productId = id.replace('Content', '');
+            const toggleBtn = document.getElementById('toggle' + productId.charAt(0).toUpperCase() + productId.slice(1));
+            const icon = toggleBtn.querySelector('i');
+            
+            if (content.style.display === 'none') {
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            } else {
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            }
+        }
+        
+        // Mostrar/ocultar inicialmente los productos
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mostrar el primer producto y ocultar los demás inicialmente
+            document.getElementById('producto1Content').style.display = 'block';
+            document.getElementById('producto2Content').style.display = 'none';
+            
+            // Configurar eventos para los encabezados de productos
+            document.querySelectorAll('.product-header').forEach(function(header) {
+                header.addEventListener('click', function() {
+                    const contentId = this.getAttribute('onclick').match(/'([^']+)'/)[1];
+                    toggleProduct(contentId);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
