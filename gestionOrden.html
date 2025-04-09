@@ -1,32 +1,48 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Órdenes - Uniformes Moda</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="Css/gestionOrden.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gestión de Órdenes - Uniformes Moda</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="Css/gestionOrden.css">
 </head>
 <body>
-
-
-    <div class="logo-container">
-        <div class="logo">
-            <div class="logo-icon"><img src="Imagenes/UM-Logo.png" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 0px; background-color: white;" alt="Logo Uniformes Moda">
-            </div>
-            <a href="LoginPedido.html"><span>Uniformes</span>Moda</a>
+<div class="logo-container">
+    <div class="logo">
+        <div class="logo-icon"><img src="Imagenes/UM-Logo.png" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 0px; background-color: white;" alt="Logo Uniformes Moda">
         </div>
-        <nav class="nav-menu">
-            <a href="#">Mujer</a>
-            <a href="#">Hombre</a>
-            <a href="#">Contáctanos</a>
-            <a href="#">Nosotros</a>
-        </nav>
+        <a href="LoginPedido.html"><span>Uniformes</span>Moda</a>
     </div>
+    <nav class="nav-menu">
+        <a href="#">Contáctanos</a>
+        <a href="#">Nosotros</a>
+    </nav>
+</div>
 
-    <div class="container">
+<div class="container">
+    <div class="header-actions">
         <div class="page-header">Gestión de Órdenes</div>
-        <div class="table-container">
+        <a href="crearUsuarios.html" class="btn btn-create">
+            <i class="fas fa-user-plus"></i> Crear Usuarios
+        </a>
+    </div>
+    
+    <!-- Pestañas para los diferentes procesos -->
+    <div class="process-tabs">
+        <button class="tab-btn active" data-process="todos">Todos</button>
+        <button class="tab-btn" data-process="solicitud">Solicitud</button>
+        <button class="tab-btn" data-process="trazo">Trazo y Moldes</button>
+        <button class="tab-btn" data-process="cortes">Cortes</button>
+        <button class="tab-btn" data-process="confeccion">Confección</button>
+        <button class="tab-btn" data-process="bordado">Bordado</button>
+        <button class="tab-btn" data-process="entrega">Entrega</button>
+    </div>
+    
+    <div class="table-container">
+        <!-- Tabla para todos los procesos -->
+        <div class="process-table active" id="todos-table">
+            <h3 class="process-title">Todas las Órdenes</h3>
             <table>
                 <thead>
                     <tr>
@@ -53,8 +69,8 @@
                     <tr>
                         <td>ORD-2025-0043</td>
                         <td>Juan Pérez</td>
-                        <td>Completado</td>
-                        <td>Control de Calidad</td>
+                        <td>En Proceso</td>
+                        <td>Confección</td>
                         <td>María López</td>
                         <td>
                             <button class="btn btn-edit"><i class="fas fa-edit"></i> Editar</button>
@@ -72,9 +88,351 @@
                             <button class="btn btn-delete"><i class="fas fa-trash"></i> Eliminar</button>
                         </td>
                     </tr>
+                    <tr>
+                        <td>ORD-2025-0045</td>
+                        <td>Roberto Méndez</td>
+                        <td>En Proceso</td>
+                        <td>Trazo y Moldes</td>
+                        <td>Laura Sánchez</td>
+                        <td>
+                            <button class="btn btn-edit"><i class="fas fa-edit"></i> Editar</button>
+                            <button class="btn btn-delete"><i class="fas fa-trash"></i> Eliminar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ORD-2025-0046</td>
+                        <td>Carmen García</td>
+                        <td>En Proceso</td>
+                        <td>Bordado</td>
+                        <td>Daniel Torres</td>
+                        <td>
+                            <button class="btn btn-edit"><i class="fas fa-edit"></i> Editar</button>
+                            <button class="btn btn-delete"><i class="fas fa-trash"></i> Eliminar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ORD-2025-0047</td>
+                        <td>Fernando Martínez</td>
+                        <td>Finalizado</td>
+                        <td>Entrega</td>
+                        <td>Sofía Ramírez</td>
+                        <td>
+                            <button class="btn btn-edit"><i class="fas fa-edit"></i> Editar</button>
+                            <button class="btn btn-delete"><i class="fas fa-trash"></i> Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Tabla para Solicitud -->
+        <div class="process-table" id="solicitud-table">
+            <h3 class="process-title">Órdenes en Solicitud</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Número de Orden</th>
+                        <th>Cliente</th>
+                        <th>Estado</th>
+                        <th>Responsable</th>
+                        <th>Fecha Solicitud</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ORD-2025-0044</td>
+                        <td>Luisa Fernández</td>
+                        <td>Pendiente</td>
+                        <td>Pedro Gómez</td>
+                        <td>05/04/2025</td>
+                        <td>
+                            <button class="btn btn-edit"><i class="fas fa-edit"></i> Editar</button>
+                            <button class="btn btn-advance"><i class="fas fa-arrow-right"></i> Avanzar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ORD-2025-0048</td>
+                        <td>Miguel Ángel Vargas</td>
+                        <td>Pendiente</td>
+                        <td>Pedro Gómez</td>
+                        <td>08/04/2025</td>
+                        <td>
+                            <button class="btn btn-edit"><i class="fas fa-edit"></i> Editar</button>
+                            <button class="btn btn-advance"><i class="fas fa-arrow-right"></i> Avanzar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ORD-2025-0049</td>
+                        <td>Patricia Herrera</td>
+                        <td>En Revisión</td>
+                        <td>Pedro Gómez</td>
+                        <td>09/04/2025</td>
+                        <td>
+                            <button class="btn btn-edit"><i class="fas fa-edit"></i> Editar</button>
+                            <button class="btn btn-advance"><i class="fas fa-arrow-right"></i> Avanzar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Tabla para Trazo y Moldes -->
+        <div class="process-table" id="trazo-table">
+            <h3 class="process-title">Órdenes en Trazo y Moldes</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Número de Orden</th>
+                        <th>Cliente</th>
+                        <th>Estado</th>
+                        <th>Responsable</th>
+                        <th>Fecha Inicio</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Aquí estarían los registros específicos de este proceso -->
+                    <tr>
+                        <td>ORD-2025-0045</td>
+                        <td>Roberto Méndez</td>
+                        <td>En Proceso</td>
+                        <td>Laura Sánchez</td>
+                        <td>04/04/2025</td>
+                        <td>
+                            <button class="btn btn-edit"><i class="fas fa-edit"></i> Editar</button>
+                            <button class="btn btn-advance"><i class="fas fa-arrow-right"></i> Avanzar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ORD-2025-0050</td>
+                        <td>Elena Castro</td>
+                        <td>En Proceso</td>
+                        <td>Laura Sánchez</td>
+                        <td>07/04/2025</td>
+                        <td>
+                            <button class="btn btn-edit"><i class="fas fa-edit"></i> Editar</button>
+                            <button class="btn btn-advance"><i class="fas fa-arrow-right"></i> Avanzar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Tabla para Cortes -->
+        <div class="process-table" id="cortes-table">
+            <h3 class="process-title">Órdenes en Corte</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Número de Orden</th>
+                        <th>Cliente</th>
+                        <th>Estado</th>
+                        <th>Responsable</th>
+                        <th>Fecha Inicio</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ORD-2025-0042</td>
+                        <td>Ana María Rodríguez</td>
+                        <td>En Proceso</td>
+                        <td>Carlos Jiménez</td>
+                        <td>03/04/2025</td>
+                        <td>
+                            <button class="btn btn-edit"><i class="fas fa-edit"></i> Editar</button>
+                            <button class="btn btn-advance"><i class="fas fa-arrow-right"></i> Avanzar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ORD-2025-0051</td>
+                        <td>Héctor Naranjo</td>
+                        <td>En Proceso</td>
+                        <td>Carlos Jiménez</td>
+                        <td>06/04/2025</td>
+                        <td>
+                            <button class="btn btn-edit"><i class="fas fa-edit"></i> Editar</button>
+                            <button class="btn btn-advance"><i class="fas fa-arrow-right"></i> Avanzar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Tabla para Confección -->
+        <div class="process-table" id="confeccion-table">
+            <h3 class="process-title">Órdenes en Confección</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Número de Orden</th>
+                        <th>Cliente</th>
+                        <th>Estado</th>
+                        <th>Responsable</th>
+                        <th>Fecha Inicio</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Aquí estarían los registros específicos de este proceso -->
+                    <tr>
+                        <td>ORD-2025-0043</td>
+                        <td>Juan Pérez</td>
+                        <td>En Proceso</td>
+                        <td>María López</td>
+                        <td>02/04/2025</td>
+                        <td>
+                            <button class="btn btn-edit"><i class="fas fa-edit"></i> Editar</button>
+                            <button class="btn btn-advance"><i class="fas fa-arrow-right"></i> Avanzar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ORD-2025-0052</td>
+                        <td>Isabel Torres</td>
+                        <td>En Proceso</td>
+                        <td>María López</td>
+                        <td>05/04/2025</td>
+                        <td>
+                            <button class="btn btn-edit"><i class="fas fa-edit"></i> Editar</button>
+                            <button class="btn btn-advance"><i class="fas fa-arrow-right"></i> Avanzar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ORD-2025-0053</td>
+                        <td>Alejandro Guzmán</td>
+                        <td>En Revisión</td>
+                        <td>María López</td>
+                        <td>06/04/2025</td>
+                        <td>
+                            <button class="btn btn-edit"><i class="fas fa-edit"></i> Editar</button>
+                            <button class="btn btn-advance"><i class="fas fa-arrow-right"></i> Avanzar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Tabla para Bordado -->
+        <div class="process-table" id="bordado-table">
+            <h3 class="process-title">Órdenes en Bordado</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Número de Orden</th>
+                        <th>Cliente</th>
+                        <th>Estado</th>
+                        <th>Responsable</th>
+                        <th>Fecha Inicio</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Aquí estarían los registros específicos de este proceso -->
+                    <tr>
+                        <td>ORD-2025-0046</td>
+                        <td>Carmen García</td>
+                        <td>En Proceso</td>
+                        <td>Daniel Torres</td>
+                        <td>03/04/2025</td>
+                        <td>
+                            <button class="btn btn-edit"><i class="fas fa-edit"></i> Editar</button>
+                            <button class="btn btn-advance"><i class="fas fa-arrow-right"></i> Avanzar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ORD-2025-0054</td>
+                        <td>Ricardo Vega</td>
+                        <td>Pendiente</td>
+                        <td>Daniel Torres</td>
+                        <td>07/04/2025</td>
+                        <td>
+                            <button class="btn btn-edit"><i class="fas fa-edit"></i> Editar</button>
+                            <button class="btn btn-advance"><i class="fas fa-arrow-right"></i> Avanzar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Tabla para Entrega -->
+        <div class="process-table" id="entrega-table">
+            <h3 class="process-title">Órdenes en Entrega</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Número de Orden</th>
+                        <th>Cliente</th>
+                        <th>Estado</th>
+                        <th>Responsable</th>
+                        <th>Fecha Programada</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Aquí estarían los registros específicos de este proceso -->
+                    <tr>
+                        <td>ORD-2025-0047</td>
+                        <td>Fernando Martínez</td>
+                        <td>Finalizado</td>
+                        <td>Sofía Ramírez</td>
+                        <td>10/04/2025</td>
+                        <td>
+                            <button class="btn btn-edit"><i class="fas fa-edit"></i> Editar</button>
+                            <button class="btn btn-complete"><i class="fas fa-check"></i> Completar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ORD-2025-0055</td>
+                        <td>Marina Ortega</td>
+                        <td>Programado</td>
+                        <td>Sofía Ramírez</td>
+                        <td>12/04/2025</td>
+                        <td>
+                            <button class="btn btn-edit"><i class="fas fa-edit"></i> Editar</button>
+                            <button class="btn btn-complete"><i class="fas fa-check"></i> Completar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ORD-2025-0056</td>
+                        <td>Javier Núñez</td>
+                        <td>Programado</td>
+                        <td>Sofía Ramírez</td>
+                        <td>15/04/2025</td>
+                        <td>
+                            <button class="btn btn-edit"><i class="fas fa-edit"></i> Editar</button>
+                            <button class="btn btn-complete"><i class="fas fa-check"></i> Completar</button>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
     </div>
+</div>
+
+<!-- Script para manejar las pestañas -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const processTables = document.querySelectorAll('.process-table');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Quitar la clase active de todos los botones
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Quitar la clase active de todas las tablas
+                processTables.forEach(table => table.classList.remove('active'));
+                
+                // Añadir la clase active al botón seleccionado
+                this.classList.add('active');
+                
+                // Mostrar la tabla correspondiente
+                const processId = this.getAttribute('data-process');
+                document.getElementById(`${processId}-table`).classList.add('active');
+            });
+        });
+    });
+</script>
 </body>
 </html>
