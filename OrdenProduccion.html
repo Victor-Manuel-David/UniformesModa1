@@ -830,10 +830,25 @@
                 </div>
             </div>
 
+            
+
             <form id="produccionForm">
                 <!-- Step 1: General Information -->
                 <div class="form-step active" id="step1">
                     <div class="form-section">
+                        <div class="form-section-title">
+                            Tipo de Cliente
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="tipoCliente">Seleccione el tipo de cliente</label>
+                                <select id="tipoCliente" onchange="mostrarFormulario()">
+                                    <option value="">Seleccione una opción</option>
+                                    <option value="natural">Persona Natural</option>
+                                    <option value="juridica">Persona Jurídica</option>
+                                </select>
+                            </div>
+                        </div>
                         <div class="form-section-title">
                             Información General
                         </div>
@@ -852,9 +867,17 @@
                                 <label for="nombreCliente">Nombre Completo <span class="required-field">*</span></label>
                                 <input type="text" id="nombreCliente" placeholder="Ingrese su nombre completo" required>
                             </div>
-                            <div class="form-group">
+                            
+                            <!-- Campo de cédula (Para persona natural) -->
+                            <div class="form-group" id="divCedula">
                                 <label for="cedulaCliente">Número de Cédula <span class="required-field">*</span></label>
-                                <input type="text" id="cedulaCliente" placeholder="Ingrese su número de cédula" required>
+                                <input type="text" id="cedulaCliente" placeholder="Ingrese su número de cédula">
+                            </div>
+                            
+                            <!-- Campo de NIT (Para persona jurídica) -->
+                            <div class="form-group" id="divNIT">
+                                <label for="nitEmpresa">Número del NIT de la empresa <span class="required-field">*</span></label>
+                                <input type="text" id="nitEmpresa" placeholder="Ingrese el NIT de la empresa">
                             </div>
                         </div>
                         <div class="form-row">
@@ -1235,6 +1258,56 @@
                 product.parentNode.removeChild(product);
             });
         });
+
+        // Función para mostrar u ocultar campos según el tipo de cliente seleccionado
+        function mostrarFormulario() {
+            // Obtener el valor seleccionado
+            const tipoCliente = document.getElementById('tipoCliente').value;
+            
+            // Obtener referencias a los campos
+            const campoCedula = document.getElementById('divCedula');
+            const campoNIT = document.getElementById('divNIT');
+            
+            // Mostrar u ocultar campos según el tipo de cliente
+            if (tipoCliente === 'natural') {
+                // Mostrar campo de cédula y ocultar campo de NIT
+                campoCedula.style.display = 'block';
+                campoNIT.style.display = 'none';
+                // Hacer el campo de cédula requerido y el de NIT no requerido
+                document.getElementById('cedulaCliente').required = true;
+                document.getElementById('nitEmpresa').required = false;
+            } 
+            else if (tipoCliente === 'juridica') {
+                // Mostrar campo de NIT y ocultar campo de cédula
+                campoCedula.style.display = 'none';
+                campoNIT.style.display = 'block';
+                // Hacer el campo de NIT requerido y el de cédula no requerido
+                document.getElementById('cedulaCliente').required = false;
+                document.getElementById('nitEmpresa').required = true;
+            } 
+            else {
+                // Si no hay selección, ocultar ambos campos
+                campoCedula.style.display = 'block';
+                campoNIT.style.display = 'none';
+                // Ninguno de los campos es requerido
+                document.getElementById('cedulaCliente').required = false;
+                document.getElementById('nitEmpresa').required = false;
+            }
+        }
+
+        // Ejecutar la función al cargar la página para establecer el estado inicial
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ocultar ambos campos al inicio
+            const campoCedula = document.getElementById('divCedula');
+            const campoNIT = document.getElementById('divNIT');
+            
+            if (campoCedula) campoCedula.style.display = 'none';
+            if (campoNIT) campoNIT.style.display = 'none';
+            
+            // Verificar si ya hay una selección (en caso de recargar la página)
+            mostrarFormulario();
+        });
+
     </script>
 </body>
 </html>
