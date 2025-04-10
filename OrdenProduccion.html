@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orden de Producción - Uniformes Moda</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.7.32/sweetalert2.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.7.32/sweetalert2.all.min.js"></script>
+
     <style>
         :root {
             --primary: #8b1155;
@@ -923,57 +926,61 @@
         }
 
         .success-message {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 500px;
-    width: 90%;
-    background-color: var(--success);
-    color: white;
-    text-align: center;
-    padding: 30px;
-    border-radius: var(--border-radius);
-    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
-    display: none;
-    opacity: 0;
-    transition: var(--transition);
-}
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
 
-.success-message-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
+        .success-message-content {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
 
-.success-message i {
-    font-size: 48px;
-}
+        .success-message-content i {
+            color: var(--success);
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
 
-.success-message.show {
-    display: block;
-    opacity: 1;
-    animation: fadeIn 0.5s forwards;
-}
+        .success-message-content h3 {
+            color: var(--success);
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
 
-.okay-btn {
-    background-color: white;
-    color: var(--success);
-    border: none;
-    border-radius: 30px;
-    padding: 12px 40px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: var(--transition);
-}
+        .success-message-content p {
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
 
-.okay-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
+        .okay-btn {
+            background-color: var(--success);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .okay-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+        }
     </style>
 </head>
 <body>
@@ -1323,8 +1330,9 @@
             <div class="success-message" id="successMessage">
                 <div class="success-message-content">
                     <i class="fas fa-check-circle"></i>
-                    <p>¡Su orden ha sido enviada con éxito! Pronto nos pondremos en contacto.</p>
-                    <button type="button" id="okayBtn" class="okay-btn">Okay</button>
+                    <h3>¡Orden Registrada con Éxito!</h3>
+                    <p>Su número de orden es: <strong id="ordenNumero"></strong></p>
+                    <button type="button" class="okay-btn" onclick="closeSuccessMessage()">Aceptar</button>
                 </div>
             </div>
         </div>
@@ -1494,33 +1502,28 @@
 
         // Handle form submission
         function submitForm(e) {
-            e.preventDefault();
-            
-            // Validate form
-            const form = document.getElementById('produccionForm');
-            if (form.checkValidity()) {
-                // Show success message
-                document.getElementById('successMessage').classList.add('show');
-                
-                // You would typically send the form data to a server here
-                // For demo purposes, we just show the success message
-                
-                // Reset form after 3 seconds and go back to step 1
-                setTimeout(() => {
-                    form.reset();
-                    document.getElementById('successMessage').classList.remove('show');
-                    
-                    // Go back to step 1
-                    document.getElementById('step' + currentStep).classList.remove('active');
-                    currentStep = 1;
-                    document.getElementById('step' + currentStep).classList.add('active');
-                    updateProgressIndicator();
-                }, 3000);
-            } else {
-                // Trigger browser's default validation
-                document.querySelector('button[type="submit"]').click();
-            }
+            e.preventDefault(); // Prevenir el comportamiento por defecto del formulario
+
+            // Obtener el número de orden del input
+            const numeroOrden = document.getElementById('numeroOrden')?.value || "0001"; // Valor por defecto
+
+            // Mostrar SweetAlert
+            Swal.fire({
+                title: '¡Éxito!',
+                text: 'Orden registrada con éxito. Su número de orden es: ' + numeroOrden,
+                icon: 'success',
+                confirmButtonText: 'Aceptar',
+                confirmButtonColor: '#8b1155',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Redireccionar a loginpedido.html cuando el usuario hace clic en "Aceptar"
+                    window.location.href = 'LoginPedido.html';
+                }
+            });
         }
+
+        // Asignar la función al evento de envío del formulario
+        document.getElementById('produccionForm').addEventListener('submit', submitForm);
 
         // Initialize toggle functionality
         document.addEventListener('DOMContentLoaded', function() {
@@ -1616,34 +1619,7 @@
             document.querySelector('.file-upload-box').style.display = 'block';
         }
 
-        function submitForm(e) {
-    e.preventDefault();
-    
-    // Validar el formulario
-    const form = document.getElementById('produccionForm');
-    if (form.checkValidity()) {
-        // Mostrar mensaje de éxito
-        document.getElementById('successMessage').classList.add('show');
         
-        // Agregar event listener para el botón Okay
-        document.getElementById('okayBtn').addEventListener('click', function() {
-            // Ocultar mensaje de éxito
-            document.getElementById('successMessage').classList.remove('show');
-            
-            // Resetear el formulario
-            form.reset();
-            
-            // Volver al paso 1
-            document.getElementById('step' + currentStep).classList.remove('active');
-            currentStep = 1;
-            document.getElementById('step' + currentStep).classList.add('active');
-            updateProgressIndicator();
-        });
-    } else {
-        // Activar validación predeterminada del navegador
-        document.querySelector('button[type="submit"]').click();
-    }
-}
 
     </script>
 </body>
