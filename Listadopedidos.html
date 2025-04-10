@@ -351,8 +351,14 @@
             box-shadow: 0 6px 8px rgba(139, 17, 85, 0.3);
         }
 
+        .btn-back{
+            text-decoration: none;
+            color: var(--white);
+        }
+
         .action-btn i {
             transition: var(--transition);
+            text-decoration: none;
         }
 
         .action-btn:hover i {
@@ -689,7 +695,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>100000</td>
+                            <td>ORD-2025-0041</td>
                             <td>05/Febrero/2025</td>
                             <td>
                                 <div class="status-badge status-listo">
@@ -704,22 +710,22 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>100001</td>
+                            <td>ORD-2025-0042</td>
                             <td>20/Febrero/2025</td>
                             <td>
                                 <div class="status-badge status-produccion">
-                                    <span class="status-indicator"></span>
+                                    <span class="status-indicator" ></span>
                                     En Producción
                                 </div>
                             </td>
                             <td>
                                 <button class="action-btn">
-                                    Ver detalles <i class="fas fa-arrow-right"></i>
+                                    <a href="VistaPedido.html" class="btn-back">Ver detalles <i class="fas fa-arrow-right"></i></a>
                                 </button>
                             </td>
                         </tr>
                         <tr>
-                            <td>100002</td>
+                            <td>ORD-2025-0040</td>
                             <td>30/Febrero/2025</td>
                             <td>
                                 <div class="status-badge status-entregado">
@@ -757,21 +763,7 @@
     </div>
 
     <script>
-        // Animación para los botones
-        document.querySelectorAll('.action-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const orderId = this.closest('tr').querySelector('td:first-child').textContent;
-                
-                // Animación del botón
-                this.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    this.style.transform = '';
-                }, 200);
-                
-                // Modal simulado
-                alert('Visualizando detalles de la orden: ' + orderId);
-            });
-        });
+        
         
         // Efecto hover para las filas de la tabla
         document.querySelectorAll('.pedidos-table tr').forEach(row => {
