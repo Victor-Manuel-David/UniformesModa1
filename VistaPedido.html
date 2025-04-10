@@ -570,6 +570,23 @@
             box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
         }
 
+        .action-back {
+            display: flex;
+            max-width: 1000px;
+            margin: 20px auto 0;
+            padding: 0 20px;
+        }
+
+        .action-back .btn {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .action-back .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
         /* Social Media Sidebar */
         .social-media {
             position: fixed;
@@ -683,6 +700,18 @@
         @media (max-width: 992px) {
             .container {
                 width: 90%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .action-back {
+                padding: 0 15px;
+                margin-top: 15px;
+            }
+            
+            .action-back .btn {
+                font-size: 14px;
+                padding: 10px 20px;
             }
         }
 
@@ -809,6 +838,12 @@
             <a href="#">Contáctanos</a>
             <a href="#">Nosotros</a>
         </nav>
+    </div>
+
+    <div class="action-back">
+        <a href="IngresoCliente.html" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Volver
+        </a>
     </div>
 
     <div class="container">

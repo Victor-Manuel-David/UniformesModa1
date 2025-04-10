@@ -288,6 +288,28 @@ table tr:hover {
     background-color: #e6c400;
 }
 
+.action-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-back {
+    background-color: #9ea6ae;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s;
+}
+
+.btn-back:hover {
+    background-color: #5a6268;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;

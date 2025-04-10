@@ -168,6 +168,26 @@
             width: 100%;
         }
 
+        .back-button {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            border-radius: 10px;
+            padding: 15px 20px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: rgba(139, 17, 85, 0.1);
+            box-shadow: 0 5px 15px rgba(139, 17, 85, 0.1);
+            transform: translateY(-2px);
+        }
+
         .login-container {
             max-width: 500px;
             margin: 70px auto;
@@ -441,6 +461,7 @@
                     <input type="text" id="cedula" name="cedula" placeholder="Ingresa tu número de cédula" required>
                 </div>
                 <button type="submit" class="login-button" onclick="window.location.href='VistaPedido.html'">Ingresar</button>
+                <button type="button" class="back-button" onclick="window.location.href='LoginPedido.html'">Volver al inicio</button>
             </form>
         </div>
     </div>
