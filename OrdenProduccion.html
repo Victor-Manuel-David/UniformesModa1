@@ -544,6 +544,60 @@
             background-color: #3b5998;
         }
 
+        .btn {
+            font-family: 'Poppins', 'Arial', sans-serif;
+            font-weight: 600;
+            padding: 12px 25px;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(139, 17, 85, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
+        }
+
+        .action-back {
+            display: flex;
+            max-width: 1000px;
+            margin: 20px auto 0;
+            padding: 0 20px;
+        }
+
+        .action-back .btn {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .action-back .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
         /* Chat Button */
         .chat-button {
             position: fixed;
@@ -1008,11 +1062,15 @@
             <a href="LoginPedido.html"><span>Uniformes</span>Moda</a>
         </div>
         <nav class="nav-menu">
-            <a href="#">Mujer</a>
-            <a href="#">Hombre</a>
             <a href="#">Contáctanos</a>
             <a href="#">Nosotros</a>
         </nav>
+    </div>
+
+    <div class="action-back">
+        <a href="LoginPedido.html" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Volver
+        </a>
     </div>
 
     <div class="container">
