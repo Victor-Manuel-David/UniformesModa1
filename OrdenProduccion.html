@@ -672,23 +672,23 @@
             }
         });
 
-        document.getElementById('referencia').addEventListener('change', function(e) {
-            const file1 = e.target.files[0];
-            if (file1) {
-                const reader2 = new FileReader();
-                reader2.onload = function(e) {
-                    document.getElementById('preview-image1').src = e.target.result;
-                    document.getElementById('preview-container1').style.display = 'block';
-                    document.querySelector('.file-upload-box1').style.display = 'none';
-                }
-                reader2.readAsDataURL(file1);
+        document.getElementById(`producto${productCount}Referencia`).addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById(`producto${productCount}PreviewImage`).src = e.target.result;
+                    document.getElementById(`producto${productCount}PreviewContainer`).style.display = 'block';
+                    document.querySelector(`#producto${productCount} .file-upload-box`).style.display = 'none';
+                };
+                reader.readAsDataURL(file);
             }
         });
         // Función para eliminar la imagen
-        function removeImage() {
-            document.getElementById('referencia').value = '';
-            document.getElementById('preview-container1').style.display = 'none';
-            document.querySelector('.file-upload-box1').style.display = 'block';
+        function removeImage(productCount) {
+            document.getElementById(`producto${productCount}Referencia`).value = '';
+            document.getElementById(`producto${productCount}PreviewContainer`).style.display = 'none';
+            document.querySelector(`#producto${productCount} .file-upload-box`).style.display = 'block';
         }
 
         function mostrarComprobantePago() {
