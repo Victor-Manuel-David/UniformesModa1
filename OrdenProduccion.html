@@ -238,7 +238,7 @@
                                     </div>
                                     <div id="preview-container" style="display: none;">
                                         <img id="preview-image" src="" alt="Vista previa">
-                                        <button type="button" class="remove-image-btn" onclick="removeImage()">
+                                        <button type="button" class="remove-image-btn" onclick="removeImage2()">
                                             <i class="fas fa-times"></i>
                                         </button>
                                     </div>
@@ -459,7 +459,7 @@
                             </div>
                             <div id="producto${productCount}PreviewContainer" style="display: none;">
                                 <img id="producto${productCount}PreviewImage" src="" alt="Vista previa">
-                                <button type="button" class="remove-image-btn" onclick="removeImage(${productCount})">
+                                <button type="button" class="remove-image-btn1" onclick="removeImage(${productCount})">
                                     <i class="fas fa-times"></i>
                                 </button>
                             </div>
@@ -471,26 +471,7 @@
         `;
 
         productsContainer.appendChild(newProduct);
-
-        // Agregar evento para eliminar producto
-        const removeBtn = newProduct.querySelector('.remove-product-btn');
-        removeBtn.addEventListener('click', function () {
-            productsContainer.removeChild(newProduct);
-        });
-
-        const fileInput = document.getElementById(`producto${productCount}Referencia`);
-        fileInput.addEventListener('change', function (e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    document.getElementById(`producto${productCount}PreviewImage`).src = e.target.result;
-                    document.getElementById(`producto${productCount}PreviewContainer`).style.display = 'block';
-                    document.querySelector(`#producto${productCount} .file-upload-box`).style.display = 'none';
-                };
-                reader.readAsDataURL(file);
-            }
-        });
+        setupProductImageUpload(productCount);
     });
 
     // Función para mostrar/ocultar campos según el producto seleccionado
@@ -686,30 +667,60 @@
             }
         });
 
-        document.getElementById(`producto${productCount}Referencia`).addEventListener('change', function (e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    document.getElementById(`producto${productCount}PreviewImage`).src = e.target.result;
-                    document.getElementById(`producto${productCount}PreviewContainer`).style.display = 'block';
-                    document.querySelector(`#producto${productCount} .file-upload-box`).style.display = 'none';
-                };
-                reader.readAsDataURL(file);
-            }
+        document.getElementById('addProductBtn').addEventListener('click', function () {
+            const productsContainer = document.getElementById('productsContainer');
+            const productCount = productsContainer.children.length + 1;
+
+            const newProduct = document.createElement('div');
+            newProduct.className = 'product-item';
+            newProduct.id = 'producto' + productCount;
+
+            productsContainer.appendChild(newProduct);
+
+            // Agregar evento para eliminar producto
+            const removeBtn = newProduct.querySelector('.remove-product-btn');
+            removeBtn.addEventListener('click', function () {
+                productsContainer.removeChild(newProduct);
+            });
         });
+
+        // Función para manejar la carga de imágenes de productos
+        function setupProductImageUpload(productCount) {
+            const fileInput = document.getElementById(`producto${productCount}Referencia`);
+            
+            if (fileInput) {
+                fileInput.addEventListener('change', function(e) {
+                    const file = e.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            document.getElementById(`producto${productCount}PreviewImage`).src = e.target.result;
+                            document.getElementById(`producto${productCount}PreviewContainer`).style.display = 'block';
+                            document.querySelector(`#producto${productCount} .file-upload-box`).style.display = 'none';
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+            }
+        }
+
         // Función para eliminar la imagen
         function removeImage(productCount) {
-            const fileInput = document.getElementById(`producto${productCount}Referencia`);
-            const previewContainer = document.getElementById(`producto${productCount}PreviewContainer`);
-            const fileUploadBox = document.querySelector(`#producto${productCount} .file-upload-box`);
+            const inputFile = document.getElementById(`producto${productCount}Referencia`);
+            if (inputFile) {
+                inputFile.value = '';
+                document.getElementById(`producto${productCount}PreviewContainer`).style.display = 'none';
+                document.querySelector(`#producto${productCount} .file-upload-box`).style.display = 'block';
+            }
+        }
 
-            // Restablecer el input de archivo
-            fileInput.value = '';
-            // Ocultar el contenedor de vista previa
-            previewContainer.style.display = 'none';
-            // Mostrar nuevamente el contenedor de subida de archivos
-            fileUploadBox.style.display = 'block';
+        function removeImage2() {
+            const inputFile = document.getElementById('comprobantePago');
+            if (inputFile) {
+                inputFile.value = '';
+                document.getElementById('preview-container').style.display = 'none';
+                document.querySelector('.file-upload-box').style.display = 'block';
+            }
         }
 
         function mostrarComprobantePago() {
