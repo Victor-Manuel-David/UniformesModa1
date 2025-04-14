@@ -197,106 +197,7 @@
                         </div>
 
                         <div id="productsContainer">
-                            <!-- Producto 1 -->
-                            <div class="product-item" id="producto1">
-                                <div class="product-header" onclick="toggleProduct('producto1Content')">
-                                    <strong>Cinturón Dama</strong>
-                                    <div class="action-buttons">
-                                        <button type="button" class="remove-product-btn">
-                                            <i class="fas fa-trash"></i> Eliminar
-                                        </button>
-                                        <button type="button" class="toggle-btn" id="toggleProducto1">
-                                            <i class="fas fa-chevron-down"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="product-content" id="producto1Content">
-                                    <div class="form-row">
-                                        <div class="form-group">
-                                            <label for="producto1Color">Color <span class="required-field">*</span></label>
-                                            <select id="producto1Color" required>
-                                                <option value="">Seleccione un color</option>
-                                                <option value="amarillo_claro">Amarillo Claro</option>
-                                                <option value="azul_rey">Azul Rey</option>
-                                                <option value="rojo">Rojo</option>
-                                                <option value="negro">Negro</option>
-                                                <option value="blanco">Blanco</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="producto1TallaCamisa">Talla de Camisa <span class="required-field">*</span></label>
-                                            <select id="producto1TallaCamisa" required>
-                                                <option value="">Seleccione una talla</option>
-                                                <option value="XS">XS</option>
-                                                <option value="S">S</option>
-                                                <option value="M">M</option>
-                                                <option value="L">L</option>
-                                                <option value="XL">XL</option>
-                                                <option value="XXL">XXL</option>
-                                                <option value="XXXL">XXXL</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group">
-                                            <label for="producto1TallaPantalon">Talla de Pantalón <span class="required-field">*</span></label>
-                                            <select id="producto1TallaPantalon" required>
-                                                <option value="">Seleccione una talla</option>
-                                                <option value="XS">XS</option>
-                                                <option value="S">S</option>
-                                                <option value="M">M</option>
-                                                <option value="L">L</option>
-                                                <option value="XL">XL</option>
-                                                <option value="XXL">XXL</option>
-                                                <option value="XXXL">XXXL</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="producto1Cantidad">Cantidad <span class="required-field">*</span></label>
-                                            <input type="number" id="producto1Cantidad" placeholder="Ingrese la cantidad" required required min="1" value="1">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="producto1Bordado">Bordado <span class="required-field">*</span></label>
-                                            <select id="producto1Bordado" required>
-                                                <option value="">Seleccione una opción</option>
-                                                <option value="si">Sí</option>
-                                                <option value="no">No</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-row">
-                                        <div class="form-group">
-                                            <label for="producto1Observaciones">Observaciones</label>
-                                            <textarea id="producto1Observaciones" placeholder="Instrucciones especiales o detalles adicionales"></textarea>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-row">
-                                        <div class="form-group">
-                                <label for="referencia">Suba una imagen de referencia<span class="required-field"></span></label>
-                                <div class="file-upload-container">
-                                    <input type="file" 
-                                        id="referencia"
-                                        accept="image/*" 
-                                        required 
-                                        style="display: none;">
-                                    <div class="file-upload-box1" onclick="document.getElementById('referencia').click()">
-                                        <i class="fas fa-cloud-upload-alt"></i>
-                                        <span>Haga clic para subir la imagen de referencia</span>
-                                        <small>Formatos permitidos: JPG, PNG, GIF</small>
-                                    </div>
-                                    <div id="preview-container1" style="display: none;">
-                                        <img id="preview-image1" src="" alt="Vista previa">
-                                        <button type="button" class="remove-image-btn" onclick="removeImage()">
-                                            <i class="fas fa-times"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
 
                         <div class="form-row">
@@ -432,6 +333,178 @@
     </div>
 
     <script>
+        // Función para cambiar el nombre del encabezado del producto
+        function actualizarNombreProducto(productCount) {
+            const tipoProducto = document.getElementById(`producto${productCount}Tipo`).value;
+            const productHeader = document.querySelector(`#producto${productCount} .product-header strong`);
+
+            if (tipoProducto === 'uniforme_materno') {
+                productHeader.textContent = 'Uniforme Materno';
+            } else if (tipoProducto === 'pantalon_dama') {
+                productHeader.textContent = 'Pantalón Dama Tradicional';
+            } else if (tipoProducto === 'cuello_v_dama') {
+                productHeader.textContent = 'Cuello V Dama';
+            } else {
+                productHeader.textContent = `Producto ${productCount}`;
+            }
+        }
+        // Agregar productos
+        document.getElementById('addProductBtn').addEventListener('click', function () {
+        const productsContainer = document.getElementById('productsContainer');
+        const productCount = productsContainer.children.length + 1;
+
+        const newProduct = document.createElement('div');
+        newProduct.className = 'product-item';
+        newProduct.id = 'producto' + productCount;
+
+        newProduct.innerHTML = `
+            <div class="product-header">
+            <strong>Producto ${productCount}</strong>
+            <div class="action-buttons">
+                <button type="button" class="remove-product-btn">
+                    <i class="fas fa-trash"></i> Eliminar
+                </button>
+            </div>
+        </div>
+        <div class="product-content">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="producto${productCount}Tipo">Seleccione el Producto <span class="required-field">*</span></label>
+                    <select id="producto${productCount}Tipo" onchange="mostrarCamposProducto(${productCount}); actualizarNombreProducto(${productCount});" required>
+                        <option value="">Seleccione un producto</option>
+                        <option value="uniforme_materno">Uniforme Materno</option>
+                        <option value="pantalon_dama">Pantalón Dama Tradicional</option>
+                        <option value="cuello_v_dama">Cuello V Dama</option>
+                    </select>
+                </div>
+            </div>
+            <div id="producto${productCount}Campos" style="display: none;">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="producto${productCount}Color">Color <span class="required-field">*</span></label>
+                        <select id="producto${productCount}Color" required>
+                            <option value="">Seleccione un color</option>
+                            <option value="amarillo_claro">Amarillo Claro</option>
+                            <option value="azul_rey">Azul Rey</option>
+                            <option value="rojo">Rojo</option>
+                            <option value="negro">Negro</option>
+                            <option value="blanco">Blanco</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="producto${productCount}TallaCamisaGroup">
+                        <label for="producto${productCount}TallaCamisa">Talla de Camisa <span class="required-field">*</span></label>
+                        <select id="producto${productCount}TallaCamisa">
+                            <option value="">Seleccione una talla</option>
+                            <option value="XS">XS</option>
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="XXL">XXL</option>
+                            <option value="XXXL">XXXL</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="producto${productCount}TallaPantalonGroup">
+                        <label for="producto${productCount}TallaPantalon">Talla de Pantalón <span class="required-field">*</span></label>
+                        <select id="producto${productCount}TallaPantalon">
+                            <option value="">Seleccione una talla</option>
+                            <option value="XS">XS</option>
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="XXL">XXL</option>
+                            <option value="XXXL">XXXL</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="producto${productCount}Tela">Tipo de Tela <span class="required-field">*</span></label>
+                        <select id="producto${productCount}Tela" required>
+                            <option value="">Seleccione una tela</option>
+                            <option value="algodon">Algodón</option>
+                            <option value="poliester">Poliéster</option>
+                            <option value="spandex">Spandex</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="producto${productCount}Cantidad">Cantidad <span class="required-field">*</span></label>
+                        <input type="number" id="producto${productCount}Cantidad" placeholder="Ingrese la cantidad" required min="1" value="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="producto${productCount}Bordado">Bordado <span class="required-field">*</span></label>
+                        <select id="producto${productCount}Bordado" required>
+                            <option value="">Seleccione una opción</option>
+                            <option value="si">Sí</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="producto${productCount}Observaciones">Observaciones</label>
+                        <textarea id="producto${productCount}Observaciones" placeholder="Instrucciones especiales o detalles adicionales"></textarea>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="producto${productCount}Referencia">Suba una imagen de referencia</label>
+                        <div class="file-upload-container">
+                            <input type="file" id="producto${productCount}Referencia" accept="image/*" style="display: none;">
+                            <div class="file-upload-box" onclick="document.getElementById('producto${productCount}Referencia').click()">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <span>Haga clic para subir la imagen de referencia</span>
+                                <small>Formatos permitidos: JPG, PNG, GIF</small>
+                            </div>
+                            <div id="producto${productCount}PreviewContainer" style="display: none;">
+                                <img id="producto${productCount}PreviewImage" src="" alt="Vista previa">
+                                <button type="button" class="remove-image-btn" onclick="removeImage(${productCount})">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        `;
+
+        productsContainer.appendChild(newProduct);
+
+        // Agregar evento para eliminar producto
+        const removeBtn = newProduct.querySelector('.remove-product-btn');
+        removeBtn.addEventListener('click', function () {
+            productsContainer.removeChild(newProduct);
+        });
+    });
+
+    // Función para mostrar/ocultar campos según el producto seleccionado
+    function mostrarCamposProducto(productCount) {
+        const tipoProducto = document.getElementById(`producto${productCount}Tipo`).value;
+        const campos = document.getElementById(`producto${productCount}Campos`);
+        const tallaCamisaGroup = document.getElementById(`producto${productCount}TallaCamisaGroup`);
+        const tallaPantalonGroup = document.getElementById(`producto${productCount}TallaPantalonGroup`);
+
+        if (tipoProducto) {
+            campos.style.display = 'block';
+
+            if (tipoProducto === 'uniforme_materno') {
+                tallaCamisaGroup.style.display = 'block';
+                tallaPantalonGroup.style.display = 'block';
+            } else if (tipoProducto === 'pantalon_dama') {
+                tallaCamisaGroup.style.display = 'none';
+                tallaPantalonGroup.style.display = 'block';
+            } else if (tipoProducto === 'cuello_v_dama') {
+                tallaCamisaGroup.style.display = 'block';
+                tallaPantalonGroup.style.display = 'none';
+            }
+        } else {
+            campos.style.display = 'none';
+        }
+    }
+
+
         // Function to toggle product content visibility
         function toggleProduct(id) {
             const content = document.getElementById(id);
@@ -481,99 +554,6 @@
             });
         }
 
-        // Add product functionality
-        document.getElementById('addProductBtn').addEventListener('click', function() {
-            const productsContainer = document.getElementById('productsContainer');
-            const productCount = productsContainer.children.length + 1;
-            
-            const newProduct = document.createElement('div');
-            newProduct.className = 'product-item';
-            newProduct.id = 'producto' + productCount;
-            
-            newProduct.innerHTML = `
-                <div class="product-header" onclick="toggleProduct('producto${productCount}Content')">
-                    <strong>Nuevo Producto</strong>
-                    <div class="action-buttons">
-                        <button type="button" class="remove-product-btn">
-                            <i class="fas fa-trash"></i> Eliminar
-                        </button>
-                        <button type="button" class="toggle-btn" id="toggleProducto${productCount}">
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="product-content" id="producto${productCount}Content">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="producto${productCount}Color">Color <span class="required-field">*</span></label>
-                            <select id="producto${productCount}Color" required>
-                                <option value="">Seleccione un color</option>
-                                <option value="amarillo_claro">Amarillo Claro</option>
-                                <option value="azul_rey">Azul Rey</option>
-                                <option value="rojo">Rojo</option>
-                                <option value="negro">Negro</option>
-                                <option value="blanco">Blanco</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="producto${productCount}TallaCamisa">Talla de Camisa <span class="required-field">*</span></label>
-                            <select id="producto${productCount}TallaCamisa" required>
-                                <option value="">Seleccione una talla</option>
-                                <option value="XS">XS</option>
-                                <option value="S">S</option>
-                                <option value="M">M</option>
-                                <option value="L">L</option>
-                                <option value="XL">XL</option>
-                                <option value="XXL">XXL</option>
-                                <option value="XXXL">XXXL</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="producto${productCount}TallaPantalon">Talla de Pantalón <span class="required-field">*</span></label>
-                            <select id="producto${productCount}TallaPantalon" required>
-                                <option value="">Seleccione una talla</option>
-                                <option value="XS">XS</option>
-                                <option value="S">S</option>
-                                <option value="M">M</option>
-                                <option value="L">L</option>
-                                <option value="XL">XL</option>
-                                <option value="XXL">XXL</option>
-                                <option value="XXXL">XXXL</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="producto${productCount}Bordado">Bordado <span class="required-field">*</span></label>
-                            <select id="producto${productCount}Bordado" required>
-                                <option value="">Seleccione una opción</option>
-                                <option value="si">Sí</option>
-                                <option value="no">No</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="producto${productCount}Cantidad">Cantidad <span class="required-field">*</span></label>
-                            <input type="number" id="producto${productCount}Cantidad" required min="1" value="1">
-                        </div>
-                        <div class="form-group">
-                            <label for="producto${productCount}Observaciones">Observaciones</label>
-                            <textarea id="producto${productCount}Observaciones" placeholder="Instrucciones especiales o detalles adicionales"></textarea>
-                        </div>
-                    </div>
-                </div>
-            `;
-            
-            productsContainer.appendChild(newProduct);
-            
-            // Add event listener for remove button
-            const removeBtn = newProduct.querySelector('.remove-product-btn');
-            removeBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                productsContainer.removeChild(newProduct);
-            });
-        });
 
         // Handle form submission
         function submitForm(e) {
