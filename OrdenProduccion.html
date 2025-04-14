@@ -352,7 +352,7 @@
         document.getElementById('addProductBtn').addEventListener('click', function () {
         const productsContainer = document.getElementById('productsContainer');
         const productCount = productsContainer.children.length + 1;
-
+        
         const newProduct = document.createElement('div');
         newProduct.className = 'product-item';
         newProduct.id = 'producto' + productCount;
@@ -476,6 +476,20 @@
         const removeBtn = newProduct.querySelector('.remove-product-btn');
         removeBtn.addEventListener('click', function () {
             productsContainer.removeChild(newProduct);
+        });
+
+        const fileInput = document.getElementById(`producto${productCount}Referencia`);
+        fileInput.addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById(`producto${productCount}PreviewImage`).src = e.target.result;
+                    document.getElementById(`producto${productCount}PreviewContainer`).style.display = 'block';
+                    document.querySelector(`#producto${productCount} .file-upload-box`).style.display = 'none';
+                };
+                reader.readAsDataURL(file);
+            }
         });
     });
 
@@ -686,9 +700,16 @@
         });
         // Función para eliminar la imagen
         function removeImage(productCount) {
-            document.getElementById(`producto${productCount}Referencia`).value = '';
-            document.getElementById(`producto${productCount}PreviewContainer`).style.display = 'none';
-            document.querySelector(`#producto${productCount} .file-upload-box`).style.display = 'block';
+            const fileInput = document.getElementById(`producto${productCount}Referencia`);
+            const previewContainer = document.getElementById(`producto${productCount}PreviewContainer`);
+            const fileUploadBox = document.querySelector(`#producto${productCount} .file-upload-box`);
+
+            // Restablecer el input de archivo
+            fileInput.value = '';
+            // Ocultar el contenedor de vista previa
+            previewContainer.style.display = 'none';
+            // Mostrar nuevamente el contenedor de subida de archivos
+            fileUploadBox.style.display = 'block';
         }
 
         function mostrarComprobantePago() {
