@@ -1107,3 +1107,153 @@ input[readonly] {
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
 }
+
+/* Media Queries para Tabletas */
+@media (min-width: 768px) and (max-width: 1200px) {
+  /* Ajustes de contenedor */
+  .container {
+    width: 95%;
+    padding: 30px 20px;
+  }
+  
+  /* Ajustes del encabezado */
+  .header {
+    padding: 12px 3%;
+  }
+  
+  .header-contact {
+    gap: 12px;
+  }
+  
+  .header-promo {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+  
+  /* Navegación y logo */
+  .logo-container {
+    padding: 15px 3%;
+  }
+  
+  .logo {
+    font-size: 28px;
+  }
+  
+  .logo-icon {
+    width: 34px;
+    height: 34px;
+  }
+  
+  .nav-menu {
+    gap: 15px;
+  }
+  
+  .nav-menu a {
+    padding: 6px 10px;
+    font-size: 15px;
+  }
+  
+  /* Ajustes de formulario */
+  .form-header {
+    padding: 25px 15px;
+    font-size: 24px;
+  }
+  
+  .form-content {
+    padding: 25px;
+  }
+  
+  .form-row {
+    gap: 20px;
+  }
+  
+  .form-group {
+    min-width: 180px;
+  }
+  
+  .form-section-title {
+    font-size: 20px;
+    margin-top: 30px;
+  }
+  
+  /* Productos */
+  .product-header {
+    padding: 12px 15px;
+  }
+  
+  .product-header strong {
+    font-size: 16px;
+  }
+  
+  /* Botones */
+  .submit-btn {
+    width: 80%;
+    padding: 14px 25px;
+    font-size: 16px;
+  }
+  
+  /* Carga de archivos */
+  .file-upload-container {
+    width: 85%;
+  }
+  
+  .file-upload-box, .file-upload-box1 {
+    padding: 30px;
+  }
+  
+  #preview-image, #preview-image1, [id$="PreviewImage"] {
+    max-width: 350px;
+    max-height: 350px;
+  }
+  
+  /* Términos y condiciones */
+  .terms-content {
+    height: 180px;
+  }
+  
+  /* Mensaje de éxito */
+  .success-message-content {
+    padding: 30px;
+    max-width: 450px;
+  }
+  
+  .success-message-content i {
+    font-size: 50px;
+  }
+  
+  .success-message-content h3 {
+    font-size: 22px;
+  }
+  
+  /* Barra lateral de redes sociales */
+  .social-media {
+    right: 15px;
+  }
+  
+  .social-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+  }
+  
+  /* Indicador de progreso */
+  .progress-indicator {
+    margin-bottom: 25px;
+  }
+  
+  .progress-step {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .progress-step-label {
+    font-size: 13px;
+  }
+  
+  /* Botón de chat */
+  .chat-button {
+    padding: 12px 20px;
+    right: 20px;
+    bottom: 20px;
+  }
+}
