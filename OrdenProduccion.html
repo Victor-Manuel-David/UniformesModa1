@@ -472,6 +472,12 @@
 
         productsContainer.appendChild(newProduct);
         setupProductImageUpload(productCount);
+
+        // Agregar evento para eliminar producto
+        const removeBtn = newProduct.querySelector('.remove-product-btn');
+        removeBtn.addEventListener('click', function () {
+            productsContainer.removeChild(newProduct);
+        });
     });
 
     // Función para mostrar/ocultar campos según el producto seleccionado
