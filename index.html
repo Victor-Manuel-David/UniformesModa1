@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Uniformes Moda</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="Css/index.css">
+</head>
+<body>
+    <div class="preloader">
+        <div class="spinner"></div>
+    </div>
+
+    <header class="header">
+        <div class="header-contact">
+            <div>
+                <i class="fas fa-phone"></i> 3053170520
+            </div>
+            <div>
+                <i class="fas fa-envelope"></i> INFO@UNIFORMESMODA.COM
+            </div>
+        </div>
+        <div class="header-promo">
+            ENVÍOS GRATIS POR COMPRAS SUPERIORES A 200.000
+        </div>
+        <div class="header-cart">
+            <i class="fas fa-shopping-cart"></i> 
+            <span>0 ELEMENTOS</span>
+        </div>
+    </header>
+
+    <div class="logo-container">
+        <div class="logo">
+            <img src="Imagenes/UM-Logo.png" alt="Logo" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;">
+            <span>Uniformes Moda</span>
+        </div>
+        <nav class="nav-menu">
+            <!-- <a href="#">Mujer</a>
+            <a href="#">Hombre</a>  -->
+            <a href="/OpcionPedido.html">Pedido</a>
+            <a href="#">Contáctanos</a>
+            <a href="#about">Nosotros</a> 
+        </nav>
+    </div>
+
+    <!-- Agregar después del div "logo-container" y antes del "login-container" -->
+<div id="about" class="about-section">
+    <div class="about-content fade-in">
+        <h2 class="about-title">Bienvenidos a <span>Uniformes Moda</span></h2>
+        <p class="about-desc">Somos una empresa líder en la confección de uniformes médicos de alta calidad, diseñados para profesionales que valoran el confort, la elegancia y la durabilidad.</p>
+        
+        <div class="about-features">
+            <div class="feature">
+                <i class="fas fa-tshirt"></i>
+                <h3>Calidad Premium</h3>
+                <p>Usamos las mejores telas y materiales para garantizar productos duraderos.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-palette"></i>
+                <h3>Diseños Exclusivos</h3>
+                <p>Creamos uniformes que combinan funcionalidad con las últimas tendencias.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-truck-fast"></i>
+                <h3>Entrega Rápida</h3>
+                <p>Garantizamos envíos puntuales para que recibas tus productos a tiempo.</p>
+            </div>
+        </div>
+    </div>
+    <div class="about-image fade-in">
+        <img src="Imagenes/484839967_661819203092718_3288053186594661754_n.jfif" alt="Uniformes Moda">
+        <div class="image-badge">20+ años de experiencia</div>
+    </div>
+</div>
+
+    <div class="social-media">
+        <div class="social-icon whatsapp">
+            <i class="fab fa-whatsapp"></i>
+        </div>
+        <div class="social-icon instagram">
+            <i class="fab fa-instagram"></i>
+        </div>
+        <div class="social-icon facebook">
+            <i class="fab fa-facebook-f"></i>
+        </div>
+    </div>
+
+    <div class="chat-button">
+        En línea <i class="fas fa-comment"></i>
+    </div>
+
+    <script>
+        // Preloader
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.querySelector('.preloader').classList.add('hidden');
+            }, 800);
+        });
+
+        // Efecto hover en botones
+        const buttons = document.querySelectorAll('.option-button');
+        buttons.forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+                this.style.boxShadow = '0 10px 20px rgba(139, 17, 85, 0.15)';
+            });
+            
+            button.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = 'none';
+            });
+            
+            button.addEventListener('click', function() {
+                this.classList.add('animate__animated', 'animate__pulse');
+                setTimeout(() => {
+                    this.classList.remove('animate__animated', 'animate__pulse');
+                }, 1000);
+            });
+        });
+
+        // Animación carrito
+        const cart = document.querySelector('.header-cart');
+        cart.addEventListener('click', function() {
+            this.classList.add('animate__animated', 'animate__heartBeat');
+            setTimeout(() => {
+                this.classList.remove('animate__animated', 'animate__heartBeat');
+            }, 1000);
+        });
+
+        // Animación para los iconos sociales
+        const socialIcons = document.querySelectorAll('.social-icon');
+        socialIcons.forEach(icon => {
+            icon.addEventListener('click', function() {
+                this.classList.add('animate__animated', 'animate__rubberBand');
+                setTimeout(() => {
+                    this.classList.remove('animate__animated', 'animate__rubberBand');
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>

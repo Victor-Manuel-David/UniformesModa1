@@ -31,7 +31,7 @@
         <div class="logo">
             <div class="logo-icon"><img src="Imagenes/UM-Logo.png" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 0px; background-color: white;" alt="Logo Uniformes Moda">
             </div>
-            <a href="LoginPedido.html"><span>Uniformes</span>Moda</a>
+            <a href="index.html"><span>Uniformes</span>Moda</a>
         </div>
         <nav class="nav-menu">
             <a href="#">Contáctanos</a>
@@ -40,7 +40,7 @@
     </div>
 
     <div class="action-back">
-        <a href="LoginPedido.html" class="btn btn-secondary">
+        <a href="OpcionPedido.html" class="btn btn-secondary">
             <i class="fas fa-arrow-left"></i> Volver
         </a>
     </div>
@@ -472,6 +472,12 @@
 
         productsContainer.appendChild(newProduct);
         setupProductImageUpload(productCount);
+
+        // Agregar evento para eliminar producto
+        const removeBtn = newProduct.querySelector('.remove-product-btn');
+        removeBtn.addEventListener('click', function () {
+            productsContainer.removeChild(newProduct);
+        });
     });
 
     // Función para mostrar/ocultar campos según el producto seleccionado
@@ -567,7 +573,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     // Redireccionar a loginpedido.html cuando el usuario hace clic en "Aceptar"
-                    window.location.href = 'LoginPedido.html';
+                    window.location.href = 'index.html';
                 }
             });
         }
