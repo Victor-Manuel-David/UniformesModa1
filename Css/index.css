@@ -256,17 +256,18 @@ line-height: 1.5;
     width: 100%; /* Ocupa todo el ancho disponible */
     max-width: 800px; /* Limitar el tamaño máximo */
     margin: 0 auto; /* Centrar horizontalmente */
+    
 }
 
 .about-image img {
     width: 100%;
     height: auto;
-    /* Limitar altura máxima */
+    border-radius: 10px;
     object-fit: cover; /* Mantener proporciones de la imagen */
 }
 
 .about-image:hover img {
-transform: scale(1.03);
+transform: scale(1.02);
 }
 
 .image-badge {
