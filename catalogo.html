@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo - Uniformes Moda</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="Css/catalogo.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-contact">
+            <div><i class="fas fa-phone"></i> 3053170520</div>
+            <div><i class="fas fa-envelope"></i> INFO@UNIFORMESMODA.COM</div>
+        </div>
+        <div class="header-promo">
+            ENVÍOS GRATIS POR COMPRAS SUPERIORES A 200.000
+        </div>
+        <div class="header-cart">
+            <i class="fas fa-shopping-cart"></i> 
+            <span>0 ELEMENTOS</span>
+        </div>
+    </header>
+
+    <div class="logo-container">
+        <div class="logo">
+            <img src="Imagenes/UM-Logo.png" alt="Logo">
+            <span>Uniformes Moda</span>
+        </div>
+        <nav class="nav-menu">
+            <a href="index.html">Inicio</a>
+            <a href="catalogo.html" class="active">Catálogo</a>
+            <a href="contacto.html">Contáctanos</a>
+            <a href="#about">Nosotros</a>
+        </nav>
+    </div>
+
+    <main class="catalog-container">
+        <aside class="filters">
+            <h3>Filtros</h3>
+            <div class="filter-group">
+                <h4>Categorías</h4>
+                <label><input type="checkbox"> Uniformes Médicos</label>
+                <label><input type="checkbox"> Zapatos Médicos</label>
+                <label><input type="checkbox"> Accesorios</label>
+            </div>
+            <div class="filter-group">
+                <h4>Precio</h4>
+                <div class="price-range">
+                    <input type="range" min="0" max="500000" step="10000">
+                    <div class="price-inputs">
+                        <input type="number" placeholder="Min">
+                        <input type="number" placeholder="Max">
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <section class="products">
+            <div class="product-card">
+                <img src="Imagenes/uniforme1.jpg" alt="Uniforme Médico">
+                <div class="product-info">
+                    <h3>Uniforme Médico Premium</h3>
+                    <p>Uniforme antifluido de alta calidad</p>
+                    <div class="price">$180.000</div>
+                    <div class="colors">
+                        <span class="color-dot" style="background: white;"></span>
+                        <span class="color-dot" style="background: #007bff;"></span>
+                        <span class="color-dot" style="background: #28a745;"></span>
+                    </div>
+                    <button class="add-to-cart">Agregar al carrito</button>
+                </div>
+            </div>
+            <!-- Repite el product-card para más productos -->
+        </section>
+    </main>
+
+    <div class="pagination">
+        <button class="active">1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>></button>
+    </div>
+
+    <div class="social-media">
+        <div class="social-icon whatsapp">
+            <i class="fab fa-whatsapp"></i>
+        </div>
+        <div class="social-icon instagram">
+            <i class="fab fa-instagram"></i>
+        </div>
+        <div class="social-icon facebook">
+            <i class="fab fa-facebook-f"></i>
+        </div>
+    </div>
+
+    <div class="chat-button">
+        En línea <i class="fas fa-comment"></i>
+    </div>
+</body>
+</html>
