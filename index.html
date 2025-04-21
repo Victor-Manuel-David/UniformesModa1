@@ -3,16 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Uniformes Moda</title>
+    <title>Uniformes Moda - Uniformes Médicos con Estilo</title>
+    <meta name="description" content="Uniformes Moda - Venta de uniformes médicos de alta calidad para profesionales de la salud. Diseños exclusivos, cómodos y duraderos.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="Css/index.css">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="Imagenes/UM-Logo.png" type="image/x-icon">
 </head>
 <body>
+    <!-- Preloader -->
     <div class="preloader">
         <div class="spinner"></div>
     </div>
 
+    <!-- Header -->
     <header class="header">
         <div class="header-contact">
             <div>
@@ -25,72 +30,257 @@
         <div class="header-promo">
             ENVÍOS GRATIS POR COMPRAS SUPERIORES A 200.000
         </div>
-        <div class="header-cart">
+        <div class="header-cart animate__animated">
             <i class="fas fa-shopping-cart"></i> 
             <span>0 ELEMENTOS</span>
         </div>
     </header>
 
+    <!-- Navegación -->
     <div class="logo-container">
         <div class="logo">
             <img src="Imagenes/UM-Logo.png" alt="Logo" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;">
             <span>Uniformes Moda</span>
         </div>
         <nav class="nav-menu">
-            <!-- <a href="#">Mujer</a>
-            <a href="#">Hombre</a>  -->
+            <a href="#productos">Catálogo</a>
             <a href="/OpcionPedido.html">Pedido</a>
-            <a href="#">Contáctanos</a>
+            <a href="#contacto">Contáctanos</a>
             <a href="#about">Nosotros</a> 
         </nav>
     </div>
 
-    <!-- Agregar después del div "logo-container" y antes del "login-container" -->
-<div id="about" class="about-section">
-    <div class="about-content fade-in">
-        <h2 class="about-title">Bienvenidos a <span>Uniformes Moda</span></h2>
-        <p class="about-desc">Somos una empresa líder en la confección de uniformes médicos de alta calidad, diseñados para profesionales que valoran el confort, la elegancia y la durabilidad.</p>
-        
-        <div class="about-features">
-            <div class="feature">
-                <i class="fas fa-tshirt"></i>
-                <h3>Calidad Premium</h3>
-                <p>Usamos las mejores telas y materiales para garantizar productos duraderos.</p>
-            </div>
-            <div class="feature">
-                <i class="fas fa-palette"></i>
-                <h3>Diseños Exclusivos</h3>
-                <p>Creamos uniformes que combinan funcionalidad con las últimas tendencias.</p>
-            </div>
-            <div class="feature">
-                <i class="fas fa-truck-fast"></i>
-                <h3>Entrega Rápida</h3>
-                <p>Garantizamos envíos puntuales para que recibas tus productos a tiempo.</p>
+    <!-- Hero Banner -->
+    <div class="hero-banner">
+        <div class="hero-content">
+            <h1 class="animate__animated animate__fadeInDown">Uniformes Médicos con Estilo y Calidad</h1>
+            <p class="animate__animated animate__fadeInUp">Diseños exclusivos para profesionales de la salud que buscan confort y elegancia</p>
+            <div class="hero-buttons">
+                <a href="#productos" class="btn-primary animate__animated animate__fadeInLeft">Ver Catálogo</a>
+                <a href="/OpcionPedido.html" class="btn-secondary animate__animated animate__fadeInRight">Pedido</a>
             </div>
         </div>
-    </div>
-    <div class="about-image fade-in">
-        <img src="Imagenes/484839967_661819203092718_3288053186594661754_n.jfif" alt="Uniformes Moda">
-        <div class="image-badge">20+ años de experiencia</div>
-    </div>
-</div>
-
-    <div class="social-media">
-        <div class="social-icon whatsapp">
-            <i class="fab fa-whatsapp"></i>
-        </div>
-        <div class="social-icon instagram">
-            <i class="fab fa-instagram"></i>
-        </div>
-        <div class="social-icon facebook">
-            <i class="fab fa-facebook-f"></i>
+        <div class="hero-image animate__animated animate__fadeIn">
+            <img src="Imagenes/Publicidad3.jpg" alt="Uniformes Moda Colección" onerror="this.src='https://via.placeholder.com/600x400/f8f9fa/212529?text=Uniformes+Moda'">
         </div>
     </div>
 
+    <!-- Sección Nosotros -->
+    <div id="about" class="about-section">
+        <div class="about-content fade-in">
+            <h2 class="about-title">Bienvenidos a <span>Uniformes Moda</span></h2>
+            <p class="about-desc">Somos una empresa líder en la confección de uniformes médicos de alta calidad, diseñados para profesionales que valoran el confort, la elegancia y la durabilidad.</p>
+            
+            <div class="about-features">
+                <div class="feature">
+                    <i class="fas fa-tshirt"></i>
+                    <h3>Calidad Premium</h3>
+                    <p>Usamos las mejores telas y materiales para garantizar productos duraderos.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-palette"></i>
+                    <h3>Diseños Exclusivos</h3>
+                    <p>Creamos uniformes que combinan funcionalidad con las últimas tendencias.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-truck-fast"></i>
+                    <h3>Entrega Rápida</h3>
+                    <p>Garantizamos envíos puntuales para que recibas tus productos a tiempo.</p>
+                </div>
+            </div>
+        </div>
+        <div class="about-image fade-in">
+            <img src="Imagenes/Publicidad.jpg" alt="Uniformes Moda">
+            <div class="image-badge">20+ años de experiencia</div>
+        </div>
+    </div>
+
+    
+
+    <!-- Sección Productos Destacados -->
+    <div class="featured-products">
+        <h2 class="section-title">Productos Destacados</h2>
+        <div class="products-container">
+            <div class="product-card">
+                <div class="product-badge">Nuevo</div>
+                <img src="Imagenes/Camisa Mujer Mickye.jpg" alt="Conjunto Médico" onerror="this.src='https://via.placeholder.com/300x300/f8f9fa/212529?text=Producto+1'">
+                <h3>Camisa Mujer Mickye</h3>
+                <div class="product-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <span>(24)</span>
+                </div>
+                <p class="product-price">$120.000</p>
+                <button class="add-to-cart-btn">Añadir al Carrito</button>
+            </div>
+            <div class="product-card">
+                <img src="Imagenes/Camisa hombre roja.jpg" alt="Bata Médica" onerror="this.src='https://via.placeholder.com/300x300/f8f9fa/212529?text=Producto+2'">
+                <h3>Bata Hombre roja</h3>
+                <div class="product-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <span>(18)</span>
+                </div>
+                <p class="product-price">$95.000</p>
+                <button class="add-to-cart-btn">Añadir al Carrito</button>
+            </div>
+            <div class="product-card">
+                <div class="product-badge">Oferta</div>
+                <img src="Imagenes/Camisa Corta Mujer.jpg" alt="Zapatos Médicos" onerror="this.src='https://via.placeholder.com/300x300/f8f9fa/212529?text=Producto+3'">
+                <h3>Bata manga corta</h3>
+                <div class="product-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <span>(32)</span>
+                </div>
+                <p class="product-price"><span class="original-price">$150.000</span> $130.000</p>
+                <button class="add-to-cart-btn">Añadir al Carrito</button>
+            </div>
+            <div class="product-card">
+                <img src="Imagenes/Camisa cierre Hombre.jpg" alt="Conjunto Pediátrico" onerror="this.src='https://via.placeholder.com/300x300/f8f9fa/212529?text=Producto+4'">
+                <h3>Bata Cierre Hombre</h3>
+                <div class="product-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <span>(41)</span>
+                </div>
+                <p class="product-price">$110.000</p>
+                <button class="add-to-cart-btn">Añadir al Carrito</button>
+            </div>
+        </div>
+        <div class="view-all-container">
+            <a href="#" class="view-all-btn">Ver todo el catálogo <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+
+    <!-- Sección Testimonios -->
+    <div class="testimonials-section">
+        <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+        <div class="testimonials-container">
+            <div class="testimonial-card">
+                <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"Los uniformes son increíblemente cómodos y resistentes. Después de varios lavados siguen como nuevos."</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Cliente">
+                    <div>
+                        <h4>María Rodríguez</h4>
+                        <span>Enfermera</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"El diseño es moderno y la calidad es excelente. Recibí muchos cumplidos de mis colegas y pacientes."</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Cliente">
+                    <div>
+                        <h4>Carlos Mendoza</h4>
+                        <span>Médico</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"Excelente servicio al cliente y envío rápido. Los uniformes son exactamente como se muestran en las fotos."</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Cliente">
+                    <div>
+                        <h4>Ana Gómez</h4>
+                        <span>Fisioterapeuta</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Redes Sociales -->
+    <div class="social-media-section">
+        <h2 class="section-title">Síguenos en Redes Sociales</h2>
+        <p class="social-subtitle">Conoce nuestras novedades y promociones exclusivas</p>
+        <div class="social-media">
+            <a href="https://wa.me/573053170520\" class="social-icon whatsapp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://www.instagram.com/uniformesmoda?igsh=cThscWNpbWMxcXFt " class="social-icon instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.facebook.com/share/1Bh7vDnTLC/" class="social-icon facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Botón de Chat -->
     <div class="chat-button">
         En línea <i class="fas fa-comment"></i>
     </div>
 
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Uniformes Moda</h3>
+                <p>Calidad y estilo para profesionales de la salud desde hace más de 20 años.</p>
+                <div class="footer-social">
+                    <a href="https://wa.me/573053170520\"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/uniformesmoda?igsh=cThscWNpbWMxcXFt "><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/1Bh7vDnTLC/"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Enlaces rápidos</h3>
+                <ul>
+                    <li><a href="#about">Nosotros</a></li>
+                    <li><a href="/OpcionPedido.html">Pedidos</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contacto</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-phone"></i> 3053170520</li>
+                    <li><i class="fas fa-envelope"></i> INFO@UNIFORMESMODA.COM</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Medellín, Colombia</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Uniformes Moda. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
     <script>
         // Preloader
         window.addEventListener('load', function() {
@@ -100,7 +290,7 @@
         });
 
         // Efecto hover en botones
-        const buttons = document.querySelectorAll('.option-button');
+        const buttons = document.querySelectorAll('.option-button, .add-to-cart-btn, .btn-primary, .btn-secondary');
         buttons.forEach(button => {
             button.addEventListener('mouseenter', function() {
                 this.style.transform = 'translateY(-5px)';
@@ -137,6 +327,39 @@
                 setTimeout(() => {
                     this.classList.remove('animate__animated', 'animate__rubberBand');
                 }, 1000);
+            });
+        });
+
+        // Animación de aparición al scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+
+        // Animación para las cards de productos
+        const productCards = document.querySelectorAll('.product-card');
+        productCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+                this.style.boxShadow = '0 15px 30px rgba(0,0,0,0.1)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.05)';
             });
         });
     </script>
